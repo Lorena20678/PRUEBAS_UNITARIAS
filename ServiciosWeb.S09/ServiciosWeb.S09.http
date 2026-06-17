@@ -1,0 +1,6 @@
+@ServiciosWeb.S09_HostAddress = http://localhost:5261
+
+GET {{ServiciosWeb.S09_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
