@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Consumir API - Semana 10</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 20px;
+        }
+
+        .grupo {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        pre {
+            background: #f0f0f0;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Prueba de API - Semana 10</h1>
+
+    <div class="grupo">
+        <h3>1. Tabla de Multiplicar</h3>
+        <input type="number" id="tabla" placeholder="Número">
+        <button onclick="tablaMultiplicar()">Generar</button>
+    </div>
+
+    <div class="grupo">
+        <h3>2. Sumar Números</h3>
+        <input type="number" id="suma" placeholder="Número">
+        <button onclick="sumarNumeros()">Calcular</button>
+    </div>
+
+    <div class="grupo">
+        <h3>3. Números Pares</h3>
+        <input type="number" id="pares" placeholder="Límite">
+        <button onclick="numerosPares()">Mostrar</button>
+    </div>
+
+    <div class="grupo">
+        <h3>4. Factorial</h3>
+        <input type="number" id="factorial" placeholder="Número">
+        <button onclick="factorialNumero()">Calcular</button>
+    </div>
+
+    <div class="grupo">
+        <h3>5. Validar Acceso</h3>
+        <input type="text" id="usuario" placeholder="Usuario">
+        <input type="password" id="clave" placeholder="Clave">
+        <button onclick="validarAcceso()">Validar</button>
+    </div>
+
+    <div class="grupo">
+        <h3>6. Lista de Productos</h3>
+        <button onclick="listaProductos()">Mostrar</button>
+    </div>
+
+    <div class="grupo">
+        <h3>7. Fibonacci</h3>
+        <input type="number" id="fibonacci" placeholder="Cantidad">
+        <button onclick="fibonacci()">Generar</button>
+    </div>
+
+    <h3>Resultado:</h3>
+    <pre id="resultado">Esperando accion...</pre>
+
+    <script>
+
+const baseUrl = "https://localhost:7161";
+
+async function tablaMultiplicar() {
+    const numero = document.getElementById('tabla').value;
+    const res = await fetch(baseUrl + "/api/bucles/tabla-multiplicar/" + numero);
+    const data = await res.json();
+    document.getElementById('resultado').innerText = data.resultado;
+}
+
+async function sumarNumeros() {
+    const numero = document.getElementById('suma').value;
+    const res = await fetch(baseUrl + "/api/bucles/sumar-numeros/" + numero);
+    const data = await res.json();
+    document.getElementById('resultado').innerText = data.resultado;
+}
+
+async function numerosPares() {
+    const numero = document.getElementById('pares').value;
+    const res = await fetch(baseUrl + "/api/bucles/numeros-pares/" + numero);
+    const data = await res.json();
+    document.getElementById('resultado').innerText = data.resultado;
+}
+
+async function factorialNumero() {
+    const numero = document.getElementById('factorial').value;
+    const res = await fetch(baseUrl + "/api/bucles/factorial/" + numero);
+    const data = await res.json();
+    document.getElementById('resultado').innerText = data.resultado;
+}
+
+async function validarAcceso() {
+    const usuario = document.getElementById('usuario').value;
+    const clave = document.getElementById('clave').value;
+
+    const res = await fetch(
+        baseUrl + "/api/bucles/validar-acceso/" + usuario + "/" + clave
+    );
+
+    const data = await res.json();
+    document.getElementById('resultado').innerText = data.resultado;
+}
+
+async function listaProductos() {
+    const res = await fetch(baseUrl + "/api/bucles/lista-productos");
+    const data = await res.json();
+    document.getElementById('resultado').innerText = data.resultado;
+}
+
+async function fibonacci() {
+    const numero = document.getElementById('fibonacci').value;
+
+    const res = await fetch(
+        baseUrl + "/api/bucles/fibonacci/" + numero
+    );
+
+    const data = await res.json();
+    document.getElementById('resultado').innerText = data.resultado;
+}
+
+    </script>
+
+</body>
+</html>
