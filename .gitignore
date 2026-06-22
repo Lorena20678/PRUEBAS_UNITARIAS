@@ -1,4 +1,9 @@
+
 /vendor/
 /.idea/
 /.vscode/
 composer.lock
+.vs/
+bin/
+obj/
+
