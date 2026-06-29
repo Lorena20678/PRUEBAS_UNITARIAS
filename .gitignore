@@ -1,3 +1,15 @@
+<<<<<<< HEAD
 vendor/
 node_modules/
 .env
+=======
+
+/vendor/
+/.idea/
+/.vscode/
+composer.lock
+.vs/
+bin/
+obj/
+
+>>>>>>> 8eb9f2060468fefaef38d13a07059ed88d6d635a
