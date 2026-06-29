@@ -1,0 +1,15 @@
+{
+  "name": "angel/s12-pu-mantari",
+  "autoload": {
+    "psr-4": {
+      "Angel\\S12PuMantari\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "lorena",
+      "email": "mantarilorena@gmail.com"
+    }
+  ],
+  "require": {}
+}
